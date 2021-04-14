@@ -8,10 +8,15 @@ default: &default
   adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
+  username: ENV["DB_USERNAME"]
+  password: ENV["DB_PASSWORD"]
+  host: ENV[DB_HOST]
+
 
 development:
   <<: *default
-  database: covid_development
+  port: 5432
+  database: cha_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -19,8 +24,8 @@ development:
 test:
   <<: *default
   database: db/test.sqlite3
-  database: covid_test
+  database: cha_test
 
 production:
   <<: *default
-  database: covid_production
+  database: cha_production
