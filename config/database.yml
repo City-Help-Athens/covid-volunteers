@@ -11,11 +11,11 @@ default: &default
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
   host: <%= ENV['DB_HOST'] %>
+  port: 5432
 
 
 development:
   <<: *default
-  port: 5432
   database: cha_development
 
 # Warning: The database defined as "test" will be erased and
@@ -23,7 +23,6 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
   database: cha_test
 
 production:
